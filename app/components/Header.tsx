@@ -32,7 +32,7 @@ export default function Header() {
           {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
         <div className={`w-full md:block md:w-auto ${isOpen ? 'block' : 'hidden'}`} id="navbar-default">
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-black dark:bg-gray-800 md:dark:bg-black dark:border-gray-700">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-gray-900 dark:bg-gray-900 md:dark:bg-gray-900 dark:border-gray-700">
             <li><a onClick={() => scrollToSection('home')} className="block py-2 px-3 text-black dark:text-gray-200 hover:text-green-400 cursor-pointer">Home</a></li>
             <li><a onClick={() => scrollToSection('about')} className="block py-2 px-3 text-black dark:text-gray-200 hover:text-green-400 cursor-pointer">About</a></li>
             <li><a onClick={() => scrollToSection('mission')} className="block py-2 px-3 text-black dark:text-gray-200 hover:text-green-400 cursor-pointer">Mission</a></li>

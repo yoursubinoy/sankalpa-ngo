@@ -147,13 +147,6 @@ function AboutSection() {
 
 function MissionSection() {
   const objectives = [
-    "Promote technological initiatives in underdeveloped regions",
-    "Enhance capabilities of local development organizations",
-    "Provide financial inclusions for rural people",
-    "Offer relief to the poor",
-    "Support education initiatives",
-    "Provide medical relief",
-    "Advance objects of general public utility",
     "To make women empowerment with environmental issues: which helps them to take their own decisions by breaking all personal limitations of the society and family.",
     "To create awareness on Digital India for reducing environmental degradation.",
     "To help the physically and financially weak and needy students, members, and other people of all communities. To help the aged, sick, helpless person through sports like yoga, physiotherapy, physical training, martial arts, etc.",
