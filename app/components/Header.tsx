@@ -18,13 +18,12 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-black shadow-md fixed w-full z-50">
+    <header className="bg-black dark:bg-gray-900 shadow-md fixed w-full z-50">
       <nav className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="/" className="flex items-center space-x-3">
           <Image src="/sankalpa.png" alt="SANKALPA Logo" width={60} height={60} />
-          <span className="self-center text-2xl font-bold text-white"><div>
-            SANKALPA
-          </div>
+          <span className="self-center text-2xl font-bold text-white dark:text-gray-200">
+            <div>SANKALPA</div>
             <div className='text-xs ml-1 font-normal'>Ever Inspiring</div>
           </span>
         </Link>
@@ -34,12 +33,12 @@ export default function Header() {
         </button>
         <div className={`w-full md:block md:w-auto ${isOpen ? 'block' : 'hidden'}`} id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-black dark:bg-gray-800 md:dark:bg-black dark:border-gray-700">
-            <li><a onClick={() => scrollToSection('home')} className="block py-2 px-3 text-white hover:text-green-400 cursor-pointer">Home</a></li>
-            <li><a onClick={() => scrollToSection('about')} className="block py-2 px-3 text-white hover:text-green-400 cursor-pointer">About</a></li>
-            <li><a onClick={() => scrollToSection('mission')} className="block py-2 px-3 text-white hover:text-green-400 cursor-pointer">Mission</a></li>
-            <li><a onClick={() => scrollToSection('gallery')} className="block py-2 px-3 text-white hover:text-green-400 cursor-pointer">Gallery</a></li>
-            <li><a onClick={() => scrollToSection('location')} className="block py-2 px-3 text-white hover:text-green-400 cursor-pointer">Location</a></li>
-            <li><a onClick={() => scrollToSection('contact')} className="block py-2 px-3 text-white hover:text-green-400 cursor-pointer">Contact</a></li>
+            <li><a onClick={() => scrollToSection('home')} className="block py-2 px-3 text-black dark:text-gray-200 hover:text-green-400 cursor-pointer">Home</a></li>
+            <li><a onClick={() => scrollToSection('about')} className="block py-2 px-3 text-black dark:text-gray-200 hover:text-green-400 cursor-pointer">About</a></li>
+            <li><a onClick={() => scrollToSection('mission')} className="block py-2 px-3 text-black dark:text-gray-200 hover:text-green-400 cursor-pointer">Mission</a></li>
+            <li><a onClick={() => scrollToSection('gallery')} className="block py-2 px-3 text-black dark:text-gray-200 hover:text-green-400 cursor-pointer">Gallery</a></li>
+            <li><a onClick={() => scrollToSection('location')} className="block py-2 px-3 text-black dark:text-gray-200 hover:text-green-400 cursor-pointer">Location</a></li>
+            <li><a onClick={() => scrollToSection('contact')} className="block py-2 px-3 text-black dark:text-gray-200 hover:text-green-400 cursor-pointer">Contact</a></li>
           </ul>
         </div>
         <div className="hidden md:flex space-x-4 items-center">

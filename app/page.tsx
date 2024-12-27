@@ -90,17 +90,17 @@ function HeroSection() {
   };
 
   return (
-    <section id="home" className="relative h-[70vh] mt-[10vh] md:h-[80vh] flex items-center justify-center text-black overflow-hidden">
+    <section id="home" className="relative h-[70vh] mt-[10vh] md:h-[80vh] flex items-center justify-center text-black dark:text-white overflow-hidden">
       <Image
         src={images[currentImage]}
         alt="SANKALPA Hero Image"
         fill
-        className="object-cover transition-opacity duration-1000"
+        className="object-cover  transition-opacity duration-1000"
       />
-      <div className="absolute inset-0 bg-white opacity-40"></div>
-      <div className="relative z-10 text-center px-4">
-        <h1 className="text-5xl md:text-8xl font-[800] mb-4 text-[#0f2b40] drop-shadow-lg" style={{ fontFamily: "Zen Antique, serif" }}>SANKALPA</h1>
-        <p className="text-xl md:text-xl text-[#2a6c9e] font-semibold drop-shadow-sm">A Non-Profitable Public Charitable Trust</p>
+      <div className="absolute inset-0 bg-white dark:bg-black opacity-40"></div>
+      <div className="relative z-10 text-center px-4 flex flex-col items-center">
+        <h1 className="text-5xl md:text-8xl font-[800] mb-4 text-[#0f2b40] dark:text-[#c0d6df] drop-shadow-lg" style={{ fontFamily: "Zen Antique, serif" }}>SANKALPA</h1>
+        <p className="max-w-[80%] text-base md:text-xl text-[#2a6c9e] dark:text-[#a0c4d6] font-semibold drop-shadow-sm ">A Non-Profitable Public Charitable Trust</p>
         <Link href="/donate">
           <div className="inline-block bg-[#046A38] text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300 mt-4 font-semibold ">
             Donate Now
@@ -128,13 +128,13 @@ function AboutSection() {
     <section id="about" className="py-16 px-4 bg-white text-black">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-center">About SANKALPA</h2>
-        <p className="text-lg mb-4">
+        <p className="text-lg mb-4 text-center md:text-left">
           The name of the Trust is &quot;SANKALPA&quot; (A Non-Profitable Non-Commercial Public Charitable Trust) and the Office of the Trust is situated at: Village Yugalpara, Post Office Aranghata, Police Station Dhantala, District- Nadia, Pin-741501, West Bengal, which may be shifted from time to time to such other place or places as the Trustees may deem fit and proper at their discretion only for official correspondence and it is not the Trust property.
         </p>
-        <p className="text-lg mb-4">
+        <p className="text-lg mb-4 text-center md:text-left">
           SANKALPA is a charitable Trust for promoting harmonious renaissance of ideas through simple technological initiatives in relatively backward and underdeveloped regions, for enhancing capabilities of local development organizations and providing financial inclusions for the rural people at large for greater financial sustenance and other charitable objects and purposes in India, hereinafter expressed for charitable purpose including relief to the poor, education, medical relief and advancement of any other object of general public utility not involving or carrying on of any activity for profit all over India and for this he is desirous of setting up a Public Charitable Trust for the advancement of the said object in India.
         </p>
-        <p className="text-lg mb-4 font-semibold flex justify-between">
+        <p className="text-lg mb-4 font-semibold flex justify-between md:flex-row flex-col text-center md:text-left">
           <div> (Registration No. IV-1902-01361/2023)</div>
           <div> (NITI Aayog No. WB/2023/0367402)</div>
           <div> (80G - ABHTS6398HF20231)</div>
