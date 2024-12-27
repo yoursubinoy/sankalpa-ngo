@@ -308,6 +308,8 @@ function Footer() {
           </Link>
         </div>
         <p className="mt-8">&copy; {new Date().getFullYear()} SANKALPA. All rights reserved.</p>
+        <p className="mt-8 "> Developed by</p>
+        <p className="mt-2 text-blue-500"> TAPABRATA LASKAR & SUBINOY BISWAS</p>
       </div>
     </footer>
   )
