@@ -8,12 +8,12 @@ export default function Footer() {
             <p className="text-sm">A Non-Profitable Public Charitable Trust</p>
           </div>
           <div className="text-center md:text-right hidden md:block animate-slide-in-right">
-            <p>&copy; {new Date().getFullYear()} SANKALPA. All rights reserved.</p>
-
+            <p>
+              &copy; {new Date().getFullYear()} SANKALPA. All rights reserved.
+            </p>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
-
