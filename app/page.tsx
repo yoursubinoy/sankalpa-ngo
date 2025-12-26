@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { Phone, Mail } from "lucide-react";
 import { useScrollAnimation } from "@/app/hooks/useScrollAnimation";
+import { useCounter } from "@/app/hooks/useCounter";
 
 export default function Home() {
   return (
@@ -137,7 +138,7 @@ function HeroSection() {
         </p>
         <Link href="/donate">
           <div className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3 px-8 rounded-lg hover:from-emerald-700 hover:to-teal-700 shadow-lg hover:shadow-xl transition-all duration-300 mt-4 font-semibold animate-fade-in animate-delay-500 hover-scale hover-glow select-none cursor-pointer">
-            Donate Now
+            Donate Now →
           </div>
         </Link>
       </div>
@@ -195,10 +196,10 @@ function AboutSection() {
           <div
             ref={para1Ref}
             className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 mb-6 border-l-4 border-emerald-600 animate-on-scroll ${
-              para1Visible ? "visible animate-fade-in" : ""
+              para1Visible ? "visible animate-slide-up" : ""
             }`}
           >
-            <h3 className="text-2xl font-bold text-emerald-700 mb-4 select-none">
+            <h3 className="text-2xl font-black text-emerald-700 mb-4 select-none">
               Our Identity
             </h3>
             <p className="text-lg leading-relaxed select-none">
@@ -215,10 +216,10 @@ function AboutSection() {
           <div
             ref={para2Ref}
             className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 mb-6 border-l-4 border-teal-600 animate-on-scroll ${
-              para2Visible ? "visible animate-fade-in" : ""
+              para2Visible ? "visible animate-slide-up" : ""
             }`}
           >
-            <h3 className="text-2xl font-bold text-teal-700 mb-4 select-none">
+            <h3 className="text-2xl font-black text-teal-700 mb-4 select-none">
               Our Purpose
             </h3>
             <p className="text-lg leading-relaxed select-none">
@@ -284,9 +285,7 @@ function AboutSection() {
             style={{ animationDelay: "300ms" }}
           >
             <div className="font-bold text-sm text-slate-600 mb-1">12A</div>
-            <div className="text-emerald-700 font-semibold">
-              ABHTS6398HE20231
-            </div>
+            <div className="text-cyan-700 font-semibold">ABHTS6398HE20231</div>
           </div>
         </div>
       </div>
@@ -374,10 +373,80 @@ function MissionSection() {
   );
 }
 
+// Counter Card Component
+function CounterCard({
+  number,
+  suffix,
+  label,
+  color,
+  index,
+  isVisible,
+}: {
+  number: number;
+  suffix: string;
+  label: string;
+  color: string;
+  index: number;
+  isVisible: boolean;
+}) {
+  const count = useCounter({
+    end: number,
+    duration: 2500,
+    isVisible: isVisible,
+  });
+
+  return (
+    <div
+      className={`bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ${
+        isVisible ? "animate-scale-in" : "opacity-0"
+      }`}
+      style={{ animationDelay: `${index * 150}ms` }}
+    >
+      <div
+        className={`text-5xl md:text-6xl font-bold bg-gradient-to-r ${color} bg-clip-text text-transparent mb-2`}
+      >
+        {count}
+        {suffix}
+      </div>
+      <div className="text-slate-600 font-medium text-sm md:text-base select-none">
+        {label}
+      </div>
+    </div>
+  );
+}
+
 function ImpactSection() {
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
   const { ref: subtitleRef, isVisible: subtitleVisible } = useScrollAnimation();
+  const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation();
   const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
+
+  const stats = [
+    {
+      number: 5000,
+      suffix: "+",
+      label: "Lives Touched",
+      color: "from-blue-500 to-cyan-500",
+    },
+    {
+      number: 150,
+      suffix: "+",
+      label: "Events Organized",
+      color: "from-green-500 to-emerald-500",
+    },
+    {
+      number: 200,
+      suffix: "+",
+      label: "Active Volunteers",
+      color: "from-purple-500 to-pink-500",
+    },
+    {
+      number: 25,
+      suffix: "+",
+      label: "Communities Served",
+      color: "from-orange-500 to-red-500",
+    },
+  ];
 
   const impacts = [
     {
@@ -428,6 +497,27 @@ function ImpactSection() {
         >
           Creating lasting change in communities across West Bengal
         </p>
+
+        {/* Statistics Section with Counter Effect */}
+        <div
+          ref={statsRef}
+          className={`grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 animate-on-scroll ${
+            statsVisible ? "visible" : ""
+          }`}
+        >
+          {stats.map((stat, index) => (
+            <CounterCard
+              key={index}
+              number={stat.number}
+              suffix={stat.suffix}
+              label={stat.label}
+              color={stat.color}
+              index={index}
+              isVisible={statsVisible}
+            />
+          ))}
+        </div>
+
         <div
           ref={cardsRef}
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-on-scroll ${
@@ -794,7 +884,7 @@ function Footer() {
             rel="noopener noreferrer"
           >
             <FaYoutube
-              className="text-red-400 hover:text-red-500 transition-all duration-300 hover:scale-125"
+              className="text-red-500 hover:text-red-600 transition-all duration-300 hover:scale-125"
               size={32}
             />
           </Link>
@@ -804,7 +894,7 @@ function Footer() {
             rel="noopener noreferrer"
           >
             <FaFacebook
-              className="text-blue-400 hover:text-blue-500 transition-all duration-300 hover:scale-125"
+              className="text-blue-500 hover:text-blue-600 transition-all duration-300 hover:scale-125"
               size={32}
             />
           </Link>
@@ -814,7 +904,7 @@ function Footer() {
             rel="noopener noreferrer"
           >
             <FaInstagram
-              className="text-pink-400 hover:text-pink-500 transition-all duration-300 hover:scale-125"
+              className="text-pink-500 hover:text-pink-600 transition-all duration-300 hover:scale-125"
               size={32}
             />
           </Link>
@@ -823,7 +913,7 @@ function Footer() {
           &copy; {new Date().getFullYear()} SANKALPA. All rights reserved.
         </p>
         <p className="mt-8 text-slate-300"> Developed by</p>
-        <p className="mt-2 text-teal-400 font-semibold">
+        <p className="text-xl mt-2 text-slate-200 font-semibold">
           {" "}
           TAPABRATA LASKAR & SUBINOY BISWAS
         </p>

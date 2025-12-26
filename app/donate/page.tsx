@@ -185,7 +185,7 @@ export default function Donate() {
                   <p className="text-lg mb-4 font-semibold text-slate-700">
                     UPI ID:
                   </p>
-                  <p className="text-2xl font-mono font-bold text-teal-700 bg-white px-4 py-3 rounded-lg inline-block shadow-md">
+                  <p className="text-xl  font-bold  bg-white px-4 py-3 rounded-lg inline-block shadow-md">
                     sankalpa8283@sbi
                   </p>
                 </div>

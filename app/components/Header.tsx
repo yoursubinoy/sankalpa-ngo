@@ -1,12 +1,20 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FaBars, FaTimes } from "react-icons/fa";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [logoSpin, setLogoSpin] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLogoSpin(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -26,6 +34,7 @@ export default function Header() {
             alt="SANKALPA Logo"
             width={60}
             height={60}
+            className={logoSpin ? "animate-spin-once" : ""}
           />
           <span className="self-center text-2xl font-bold text-white dark:text-gray-200 select-none">
             <div>SANKALPA</div>
@@ -105,9 +114,9 @@ export default function Header() {
             <FaInstagram className="text-white hover:text-pink-500" size={24} />
           </Link> */}
           <Link href="/donate">
-            <div className="bg-[#046A38] text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 flex gap-1.5 items-center hover-scale hover-glow select-none cursor-pointer">
-              <Heart size={20} className="inline-block" fill="#fff" />
+            <div className="bg-[#046A38] text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 flex gap-1.5 items-center hover-scale hover-glow select-none cursor-pointer animate-pulse" style={{ animationDuration: '0.75s' }}>
               Donate Now
+              <Heart size={20} className="inline-block " fill="#fff" />
             </div>
           </Link>
         </div>
