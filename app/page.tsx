@@ -127,16 +127,16 @@ function HeroSection() {
       <div className="absolute inset-0 bg-white dark:bg-black opacity-40"></div>
       <div className="relative z-10 text-center px-4 flex flex-col items-center">
         <h1
-          className="text-5xl md:text-8xl font-[800] mb-4 text-slate-800 dark:text-emerald-50 drop-shadow-2xl animate-fade-in"
+          className="text-5xl md:text-8xl font-[800] mb-4 text-slate-800 dark:text-emerald-50 drop-shadow-2xl animate-fade-in select-none"
           style={{ fontFamily: "Zen Antique, serif" }}
         >
           SANKALPA
         </h1>
-        <p className="max-w-[80%] text-base md:text-xl text-slate-700 dark:text-emerald-100 font-bold drop-shadow-lg animate-fade-in animate-delay-300">
+        <p className="max-w-[80%] text-base md:text-xl text-slate-700 dark:text-emerald-100 font-bold drop-shadow-lg animate-fade-in animate-delay-300 select-none">
           A Non-Profitable Public Charitable Trust
         </p>
         <Link href="/donate">
-          <div className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3 px-8 rounded-lg hover:from-emerald-700 hover:to-teal-700 shadow-lg hover:shadow-xl transition-all duration-300 mt-4 font-semibold animate-fade-in animate-delay-500 hover-scale hover-glow">
+          <div className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3 px-8 rounded-lg hover:from-emerald-700 hover:to-teal-700 shadow-lg hover:shadow-xl transition-all duration-300 mt-4 font-semibold animate-fade-in animate-delay-500 hover-scale hover-glow select-none cursor-pointer">
             Donate Now
           </div>
         </Link>
@@ -176,7 +176,7 @@ function AboutSection() {
       <div className="container mx-auto relative z-10">
         <h2
           ref={titleRef}
-          className={`text-4xl md:text-5xl font-bold mb-12 text-center text-emerald-700 animate-on-scroll ${
+          className={`text-4xl md:text-5xl font-bold mb-12 text-center text-emerald-700 animate-on-scroll select-none ${
             titleVisible ? "visible animate-slide-up" : ""
           }`}
         >
@@ -184,7 +184,7 @@ function AboutSection() {
         </h2>
         <p
           ref={subtitleRef}
-          className={`text-center text-lg text-slate-600 mb-12 max-w-3xl mx-auto animate-on-scroll ${
+          className={`text-center text-lg text-slate-600 mb-12 max-w-3xl mx-auto animate-on-scroll select-none ${
             subtitleVisible ? "visible animate-fade-in" : ""
           }`}
         >
@@ -198,10 +198,10 @@ function AboutSection() {
               para1Visible ? "visible animate-fade-in" : ""
             }`}
           >
-            <h3 className="text-2xl font-bold text-emerald-700 mb-4">
+            <h3 className="text-2xl font-bold text-emerald-700 mb-4 select-none">
               Our Identity
             </h3>
-            <p className="text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed select-none">
               The name of the Trust is &quot;SANKALPA&quot; (A Non-Profitable
               Non-Commercial Public Charitable Trust) and the Office of the
               Trust is situated at: Village Yugalpara, Post Office Aranghata,
@@ -218,10 +218,10 @@ function AboutSection() {
               para2Visible ? "visible animate-fade-in" : ""
             }`}
           >
-            <h3 className="text-2xl font-bold text-teal-700 mb-4">
+            <h3 className="text-2xl font-bold text-teal-700 mb-4 select-none">
               Our Purpose
             </h3>
-            <p className="text-lg leading-relaxed">
+            <p className="text-lg leading-relaxed select-none">
               SANKALPA is a charitable Trust for promoting harmonious
               renaissance of ideas through simple technological initiatives in
               relatively backward and underdeveloped regions, for enhancing
@@ -250,10 +250,10 @@ function AboutSection() {
             }`}
             style={{ animationDelay: "0ms" }}
           >
-            <div className="font-bold text-sm text-slate-600 mb-1">
+            <div className="font-bold text-sm text-slate-600 mb-1 select-none">
               Registration No.
             </div>
-            <div className="text-emerald-700 font-semibold">
+            <div className="text-emerald-700 font-semibold select-none">
               IV-1902-01361/2023
             </div>
           </div>
@@ -320,7 +320,7 @@ function MissionSection() {
       <div className="container mx-auto relative z-10">
         <h2
           ref={titleRef}
-          className={`text-4xl md:text-5xl font-bold mb-6 text-center text-emerald-700 animate-on-scroll ${
+          className={`text-4xl md:text-5xl font-bold mb-6 text-center text-emerald-700 animate-on-scroll select-none ${
             titleVisible ? "visible animate-slide-up" : ""
           }`}
         >
@@ -328,7 +328,7 @@ function MissionSection() {
         </h2>
         <p
           ref={subtitleRef}
-          className={`text-center text-lg text-slate-600 mb-12 max-w-3xl mx-auto animate-on-scroll ${
+          className={`text-center text-lg text-slate-600 mb-12 max-w-3xl mx-auto animate-on-scroll select-none ${
             subtitleVisible ? "visible animate-fade-in" : ""
           }`}
         >
@@ -362,7 +362,7 @@ function MissionSection() {
                   ></path>
                 </svg>
               </div>
-              <span className="text-slate-700 leading-relaxed">
+              <span className="text-slate-700 leading-relaxed select-none">
                 {objective}
               </span>
             </li>
@@ -413,7 +413,7 @@ function ImpactSection() {
       <div className="container mx-auto">
         <h2
           ref={titleRef}
-          className={`text-4xl md:text-5xl font-bold mb-6 text-center text-emerald-700 animate-on-scroll ${
+          className={`text-4xl md:text-5xl font-bold mb-6 text-center text-emerald-700 animate-on-scroll select-none ${
             titleVisible ? "visible animate-slide-up" : ""
           }`}
         >
@@ -421,7 +421,7 @@ function ImpactSection() {
         </h2>
         <p
           ref={subtitleRef}
-          className={`text-center text-lg text-slate-600 mb-12 max-w-3xl mx-auto animate-on-scroll ${
+          className={`text-center text-lg text-slate-600 mb-12 max-w-3xl mx-auto animate-on-scroll select-none ${
             subtitleVisible ? "visible animate-fade-in" : ""
           }`}
         >
@@ -446,10 +446,10 @@ function ImpactSection() {
               >
                 {impact.icon}
               </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">
+              <h3 className="text-xl font-bold text-slate-800 mb-3 select-none">
                 {impact.title}
               </h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed select-none">
                 {impact.description}
               </p>
             </div>
@@ -474,7 +474,7 @@ function LocationSection() {
       <div className="container mx-auto relative z-10">
         <h2
           ref={titleRef}
-          className={`text-4xl md:text-5xl font-bold mb-6 text-center text-emerald-700 animate-on-scroll ${
+          className={`text-4xl md:text-5xl font-bold mb-6 text-center text-emerald-700 animate-on-scroll select-none ${
             titleVisible ? "visible animate-slide-up" : ""
           }`}
         >
@@ -482,7 +482,7 @@ function LocationSection() {
         </h2>
         <p
           ref={subtitleRef}
-          className={`text-center text-lg text-slate-600 mb-12 max-w-3xl mx-auto animate-on-scroll ${
+          className={`text-center text-lg text-slate-600 mb-12 max-w-3xl mx-auto animate-on-scroll select-none ${
             subtitleVisible ? "visible animate-fade-in" : ""
           }`}
         >
@@ -593,7 +593,7 @@ function GalleryItem({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end rounded-2xl group-hover:from-emerald-900/80 group-hover:via-teal-900/40 transition-all duration-500">
           <div className="p-6 w-full">
-            <span className="text-white text-lg font-bold text-center block drop-shadow-lg group-hover:text-emerald-100 transition-colors duration-300">
+            <span className="text-white text-lg font-bold text-center block drop-shadow-lg group-hover:text-emerald-100 transition-colors duration-300 select-none">
               {event.name}
             </span>
             <div className="mt-2 h-1 w-0 bg-gradient-to-r from-emerald-400 to-teal-400 group-hover:w-full transition-all duration-500 mx-auto"></div>
@@ -679,7 +679,7 @@ function GallerySection() {
       <div className="container mx-auto">
         <h2
           ref={titleRef}
-          className={`text-4xl md:text-5xl font-bold mb-6 text-center text-emerald-700 animate-on-scroll ${
+          className={`text-4xl md:text-5xl font-bold mb-6 text-center text-emerald-700 animate-on-scroll select-none ${
             titleVisible ? "visible animate-slide-up" : ""
           }`}
         >
@@ -687,7 +687,7 @@ function GallerySection() {
         </h2>
         <p
           ref={subtitleRef}
-          className={`text-center text-lg text-slate-600 mb-12 max-w-3xl mx-auto animate-on-scroll ${
+          className={`text-center text-lg text-slate-600 mb-12 max-w-3xl mx-auto animate-on-scroll select-none ${
             subtitleVisible ? "visible animate-fade-in" : ""
           }`}
         >

@@ -27,7 +27,7 @@ export default function Header() {
             width={60}
             height={60}
           />
-          <span className="self-center text-2xl font-bold text-white dark:text-gray-200">
+          <span className="self-center text-2xl font-bold text-white dark:text-gray-200 select-none">
             <div>SANKALPA</div>
             <div className="text-xs ml-1 font-normal">Ever Inspiring</div>
           </span>
@@ -47,7 +47,7 @@ export default function Header() {
             <li>
               <a
                 onClick={() => scrollToSection("home")}
-                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110"
+                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110 select-none"
               >
                 Home
               </a>
@@ -55,7 +55,7 @@ export default function Header() {
             <li>
               <a
                 onClick={() => scrollToSection("about")}
-                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110"
+                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110 select-none"
               >
                 About
               </a>
@@ -63,7 +63,7 @@ export default function Header() {
             <li>
               <a
                 onClick={() => scrollToSection("mission")}
-                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110"
+                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110 select-none"
               >
                 Mission
               </a>
@@ -71,7 +71,7 @@ export default function Header() {
             <li>
               <a
                 onClick={() => scrollToSection("gallery")}
-                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110"
+                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110 select-none"
               >
                 Gallery
               </a>
@@ -79,7 +79,7 @@ export default function Header() {
             <li>
               <a
                 onClick={() => scrollToSection("location")}
-                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110"
+                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110 select-none"
               >
                 Location
               </a>
@@ -87,7 +87,7 @@ export default function Header() {
             <li>
               <a
                 onClick={() => scrollToSection("contact")}
-                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110"
+                className="block py-2 px-3 text-slate-200 hover:text-emerald-400 cursor-pointer transition-all duration-300 hover:scale-110 select-none"
               >
                 Contact
               </a>
@@ -105,7 +105,7 @@ export default function Header() {
             <FaInstagram className="text-white hover:text-pink-500" size={24} />
           </Link> */}
           <Link href="/donate">
-            <div className="bg-[#046A38] text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 flex gap-1.5 items-center hover-scale hover-glow">
+            <div className="bg-[#046A38] text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 flex gap-1.5 items-center hover-scale hover-glow select-none cursor-pointer">
               <Heart size={20} className="inline-block" fill="#fff" />
               Donate Now
             </div>
