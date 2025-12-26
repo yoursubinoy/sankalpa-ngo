@@ -18,7 +18,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-gray-900 shadow-md fixed w-full z-50">
+    <header className="bg-gray-900 shadow-md fixed w-full z-50 animate-slide-down">
       <nav className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="/" className="flex items-center space-x-3">
           <Image src="/sankalpa.png" alt="SANKALPA Logo" width={60} height={60} />
@@ -33,12 +33,12 @@ export default function Header() {
         </button>
         <div className={`w-full md:block md:w-auto ${isOpen ? 'block' : 'hidden'}`} id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-900 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-gray-900 dark:bg-gray-900 md:dark:bg-gray-900 dark:border-gray-700">
-            <li><a onClick={() => scrollToSection('home')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer">Home</a></li>
-            <li><a onClick={() => scrollToSection('about')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer">About</a></li>
-            <li><a onClick={() => scrollToSection('mission')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer">Mission</a></li>
-            <li><a onClick={() => scrollToSection('gallery')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer">Gallery</a></li>
-            <li><a onClick={() => scrollToSection('location')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer">Location</a></li>
-            <li><a onClick={() => scrollToSection('contact')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer">Contact</a></li>
+            <li><a onClick={() => scrollToSection('home')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer transition-all duration-300 hover:scale-110">Home</a></li>
+            <li><a onClick={() => scrollToSection('about')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer transition-all duration-300 hover:scale-110">About</a></li>
+            <li><a onClick={() => scrollToSection('mission')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer transition-all duration-300 hover:scale-110">Mission</a></li>
+            <li><a onClick={() => scrollToSection('gallery')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer transition-all duration-300 hover:scale-110">Gallery</a></li>
+            <li><a onClick={() => scrollToSection('location')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer transition-all duration-300 hover:scale-110">Location</a></li>
+            <li><a onClick={() => scrollToSection('contact')} className="block py-2 px-3  text-gray-200 hover:text-green-400 cursor-pointer transition-all duration-300 hover:scale-110">Contact</a></li>
           </ul>
         </div>
         <div className="hidden md:flex space-x-4 items-center">
@@ -52,7 +52,7 @@ export default function Header() {
             <FaInstagram className="text-white hover:text-pink-500" size={24} />
           </Link> */}
           <Link href="/donate">
-            <div className="bg-[#046A38] text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition duration-300 flex gap-1.5 items-center">
+            <div className="bg-[#046A38] text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 flex gap-1.5 items-center hover-scale hover-glow">
               <Heart size={20} className="inline-block" fill='#fff' />
               Donate Now
             </div>

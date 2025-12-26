@@ -1,13 +1,32 @@
+"use client"
 import Image from 'next/image'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import { useScrollAnimation } from '@/app/hooks/useScrollAnimation'
+import { use } from 'react'
 
-export default async function GalleryPage({
+function GalleryImageItem({ image, index }: { image: string; index: number }) {
+  const { ref, isVisible } = useScrollAnimation();
+  
+  return (
+    <div ref={ref} className={`relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-48 sm:h-48 md:h-64 lg:h-72 hover-lift animate-on-scroll ${isVisible ? 'visible animate-scale-in' : ''}`} style={{animationDelay: isVisible ? `${index * 0.05}s` : '0s'}}>
+      <Image
+        src={image}
+        alt={`Image ${index + 1}`}
+        fill
+        className="object-cover rounded-lg shadow-md"
+      />
+    </div>
+  );
+}
+
+export default function GalleryPage({
     params,
 }: {
     params: Promise<{ slug: string }>
-}) {
-    const events = [
+}) {    const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+    const resolvedParams = use(params);
+    const slug = parseInt(resolvedParams.slug, 10);    const events = [
         {
             src: "/events/preexam.jpg", alt: "SANKALPA Activity 1", name: "প্রাক পরীক্ষা প্রস্তুতি", images: [
                 "/events/exam/1.jpg",
@@ -192,7 +211,7 @@ export default async function GalleryPage({
             ]
         },
     ]
-    const slug = parseInt((await params).slug, 10)
+    
     return (
 
         <div className="min-h-screen flex flex-col">
@@ -200,18 +219,11 @@ export default async function GalleryPage({
             <main className="flex-grow mt-10">
                 <section className="py-16 px-4">
                     <div className="container mx-auto">
-                        <h1 className="text-4xl font-bold mb-8 text-center">
+                        <h1 ref={titleRef} className={`text-4xl font-bold mb-8 text-center animate-on-scroll ${titleVisible ? 'visible animate-slide-up' : ''}`}>
                             &quot;{events[slug].name}&quot;</h1>
                         <div className="flex flex-wrap justify-center gap-4">
                             {(events[slug]).images.map((image, index) => (
-                                <div key={index} className="relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4 h-48 sm:h-48 md:h-64 lg:h-72">
-                                    <Image
-                                        src={image}
-                                        alt={`Image ${index + 1}`}
-                                        fill
-                                        className="object-cover rounded-lg shadow-md"
-                                    />
-                                </div>
+                                <GalleryImageItem key={index} image={image} index={index} />
                             ))}
                         </div>
                     </div>

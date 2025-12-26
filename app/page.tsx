@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react';
 import { FaYoutube, FaFacebook, FaInstagram, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Phone, Mail } from 'lucide-react';
+import { useScrollAnimation } from '@/app/hooks/useScrollAnimation';
 
 export default function Home() {
   return (
@@ -73,20 +74,33 @@ function HeroSection() {
     "/herobg2/16.jpg",
   ];
   const [currentImage, setCurrentImage] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 2000); // Change image every 2 seconds
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+        setIsTransitioning(false);
+      }, 500); // Half of transition duration
+    }, 3000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, [images.length]);
 
   const handlePrev = () => {
-    setCurrentImage((prevImage) => (prevImage - 1 + images.length) % images.length);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentImage((prevImage) => (prevImage - 1 + images.length) % images.length);
+      setIsTransitioning(false);
+    }, 300);
   };
 
   const handleNext = () => {
-    setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
+      setIsTransitioning(false);
+    }, 300);
   };
 
   return (
@@ -95,14 +109,14 @@ function HeroSection() {
         src={images[currentImage]}
         alt="SANKALPA Hero Image"
         fill
-        className="object-cover  transition-opacity duration-1000"
+        className={`object-cover transition-all duration-1000 ${isTransitioning ? 'opacity-0 scale-110' : 'opacity-100 scale-100'}`}
       />
       <div className="absolute inset-0 bg-white dark:bg-black opacity-40"></div>
       <div className="relative z-10 text-center px-4 flex flex-col items-center">
-        <h1 className="text-5xl md:text-8xl font-[800] mb-4 text-[#0f2b40] dark:text-[#c0d6df] drop-shadow-lg" style={{ fontFamily: "Zen Antique, serif" }}>SANKALPA</h1>
-        <p className="max-w-[80%] text-base md:text-xl text-[#2a6c9e] dark:text-[#a0c4d6] font-semibold drop-shadow-sm ">A Non-Profitable Public Charitable Trust</p>
+        <h1 className="text-5xl md:text-8xl font-[800] mb-4 text-[#0f2b40] dark:text-[#c0d6df] drop-shadow-lg animate-fade-in" style={{ fontFamily: "Zen Antique, serif" }}>SANKALPA</h1>
+        <p className="max-w-[80%] text-base md:text-xl text-[#2a6c9e] dark:text-[#a0c4d6] font-semibold drop-shadow-sm animate-fade-in animate-delay-300">A Non-Profitable Public Charitable Trust</p>
         <Link href="/donate">
-          <div className="inline-block bg-[#046A38] text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300 mt-4 font-semibold ">
+          <div className="inline-block bg-[#046A38] text-white py-2 px-6 rounded-lg hover:bg-green-700 transition-all duration-300 mt-4 font-semibold animate-fade-in animate-delay-500 hover-scale hover-glow">
             Donate Now
           </div>
         </Link>
@@ -124,17 +138,22 @@ function HeroSection() {
 
 
 function AboutSection() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: para1Ref, isVisible: para1Visible } = useScrollAnimation();
+  const { ref: para2Ref, isVisible: para2Visible } = useScrollAnimation();
+  const { ref: para3Ref, isVisible: para3Visible } = useScrollAnimation();
+
   return (
     <section id="about" className="py-16 px-4 bg-white text-black">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">About SANKALPA</h2>
-        <p className="text-lg mb-4 text-center md:text-left">
-          The name of the Trust is &quot;SANKALPA&quot; (A Non-Profitable Non-Commercial Public Charitable Trust) and the Office of the Trust is situated at: Village Yugalpara, Post Office Aranghata, Police Station Dhantala, District- Nadia, Pin-741501, West Bengal, which may be shifted from time to time to such other place or places as the Trustees may deem fit and proper at their discretion only for official correspondence and it is not the Trust property.
+        <h2 ref={titleRef} className={`text-3xl font-bold mb-8 text-center animate-on-scroll ${titleVisible ? 'visible animate-slide-up' : ''}`}>About SANKALPA</h2>
+        <p ref={para1Ref} className={`text-lg mb-4 text-center md:text-left animate-on-scroll ${para1Visible ? 'visible animate-fade-in' : ''}`}>
+          The name of the Trust is &quot;SANKALPA&quot; (A Non-Profitable Non-Commercial Public Charitable Trust) and the Office of the Trust is situated at: Village Yugalpara, Post Office Aranghata, Police Station Dhantala, District- Nadia, Pin-741501, West Bengal, which may be shifted from time to time to such other place or places as the Trustees may deem fit and proper at their discretion only for official correspondence and it is not the Trust property.
         </p>
-        <p className="text-lg mb-4 text-center md:text-left">
+        <p ref={para2Ref} className={`text-lg mb-4 text-center md:text-left animate-on-scroll ${para2Visible ? 'visible animate-fade-in' : ''}`}>
           SANKALPA is a charitable Trust for promoting harmonious renaissance of ideas through simple technological initiatives in relatively backward and underdeveloped regions, for enhancing capabilities of local development organizations and providing financial inclusions for the rural people at large for greater financial sustenance and other charitable objects and purposes in India, hereinafter expressed for charitable purpose including relief to the poor, education, medical relief and advancement of any other object of general public utility not involving or carrying on of any activity for profit all over India and for this he is desirous of setting up a Public Charitable Trust for the advancement of the said object in India.
         </p>
-        <p className="text-lg mb-4 font-semibold flex justify-between md:flex-row flex-col text-center md:text-left">
+        <p ref={para3Ref} className={`text-lg mb-4 font-semibold flex justify-between md:flex-row flex-col text-center md:text-left animate-on-scroll ${para3Visible ? 'visible animate-fade-in' : ''}`}>
           <div> (Registration No. IV-1902-01361/2023)</div>
           <div> (NITI Aayog No. WB/2023/0367402)</div>
           <div> (80G - ABHTS6398HF20231)</div>
@@ -146,6 +165,9 @@ function AboutSection() {
 }
 
 function MissionSection() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: listRef, isVisible: listVisible } = useScrollAnimation();
+
   const objectives = [
     "To make women empowerment with environmental issues: which helps them to take their own decisions by breaking all personal limitations of the society and family.",
     "To create awareness on Digital India for reducing environmental degradation.",
@@ -162,10 +184,10 @@ function MissionSection() {
   return (
     <section id="mission" className="py-16 px-4 bg-gray-200 text-black">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Our Mission & Objectives</h2>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <h2 ref={titleRef} className={`text-3xl font-bold mb-8 text-center animate-on-scroll ${titleVisible ? 'visible animate-slide-up' : ''}`}>Our Mission & Objectives</h2>
+        <ul ref={listRef} className={`grid grid-cols-1 md:grid-cols-2 gap-4 animate-on-scroll ${listVisible ? 'visible animate-slide-up' : ''}`}>
           {objectives.map((objective, index) => (
-            <li key={index} className="flex items-start">
+            <li key={index} className="flex items-start hover-lift">
               <svg className="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
               </svg>
@@ -179,11 +201,14 @@ function MissionSection() {
 }
 
 function LocationSection() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation();
+
   return (
     <section id="location" className="py-16 px-4 bg-white text-black">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Our Location</h2>
-        <div className="flex flex-col md:flex-row items-center justify-center">
+        <h2 ref={titleRef} className={`text-3xl font-bold mb-8 text-center animate-on-scroll ${titleVisible ? 'visible animate-slide-up' : ''}`}>Our Location</h2>
+        <div ref={contentRef} className={`flex flex-col md:flex-row items-center justify-center animate-on-scroll ${contentVisible ? 'visible animate-fade-in' : ''}`}>
           <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
             <div className="mt-4">
               <iframe
@@ -219,7 +244,29 @@ function LocationSection() {
   )
 }
 
+function GalleryItem({ event, index }: { event: { src: string; alt: string; name: string }; index: number }) {
+  const { ref, isVisible } = useScrollAnimation();
+  
+  return (
+    <Link href="/gallery/[slug]" as={`/gallery/${index}`}>
+      <div ref={ref} className={`relative h-64 rounded-md overflow-hidden hover-lift transition-all duration-300 animate-on-scroll ${isVisible ? 'visible animate-fade-in' : ''}`}>
+        <Image
+          src={event.src}
+          alt={event.alt}
+          fill
+          className="object-cover rounded-lg shadow-md"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-md">
+          <span className="text-white text-center px-2">{event.name}</span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 function GallerySection() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+
   const events = [
     { src: "/events/preexam.jpg", alt: "SANKALPA Activity 1", name: "প্রাক পরীক্ষা প্রস্তুতি" },
     { src: "/events/food/1.jpg", alt: "SANKALPA Activity 2", name: "দু'মুঠোর সঙ্কল্প" },
@@ -238,22 +285,10 @@ function GallerySection() {
   return (
     <section id="gallery" className="py-16 px-4 bg-white text-black">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Our Work in Action</h2>
+        <h2 ref={titleRef} className={`text-3xl font-bold mb-8 text-center animate-on-scroll ${titleVisible ? 'visible animate-slide-up' : ''}`}>Our Work in Action</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {events.map((event, index) => (
-            <Link key={index} href="/gallery/[slug]" as={`/gallery/${index}`}>
-              <div key={index} className="relative h-64 rounded-md overflow-hidden">
-                <Image
-                  src={event.src}
-                  alt={event.alt}
-                  fill
-                  className="object-cover rounded-lg shadow-md"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-md">
-                  <span className="text-white text-center px-2">{event.name}</span>
-                </div>
-              </div>
-            </Link>
+            <GalleryItem key={index} event={event} index={index} />
           ))}
         </div>
         {/* <div className="text-center mt-5">
@@ -267,15 +302,19 @@ function GallerySection() {
 }
 
 function DonateSection() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: paraRef, isVisible: paraVisible } = useScrollAnimation();
+  const { ref: buttonRef, isVisible: buttonVisible } = useScrollAnimation();
+
   return (
     <section className="py-16 px-4 bg-green-100 text-black">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-8">Support Our Cause</h2>
-        <p className="text-lg mb-8">
+        <h2 ref={titleRef} className={`text-3xl font-bold mb-8 animate-on-scroll ${titleVisible ? 'visible animate-slide-up' : ''}`}>Support Our Cause</h2>
+        <p ref={paraRef} className={`text-lg mb-8 animate-on-scroll ${paraVisible ? 'visible animate-fade-in' : ''}`}>
           Your generous donations help us continue our mission to provide relief to the poor, support education, offer medical relief, and advance other charitable purposes.
         </p>
         <Link href="/donate">
-          <div className="inline-block bg-[#046A38] text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300">
+          <div ref={buttonRef} className={`inline-block bg-[#046A38] text-white py-2 px-6 rounded-lg hover:bg-green-700 transition-all duration-300 hover-scale hover-glow animate-on-scroll ${buttonVisible ? 'visible animate-scale-in' : ''}`}>
             Donate Now
           </div>
         </Link>
@@ -288,23 +327,23 @@ function Footer() {
   return (
     <footer className="bg-black text-white py-8" id="contact">
       <div className="container mx-auto text-center">
-        <div className="flex mb-4 items-center justify-center">
+        <div className="flex mb-4 items-center justify-center animate-scale-in">
           <Image src="/sankalpa.png" alt="SANKALPA Logo" width={70} height={70} className="" />
         </div>
-        <div className="text-white px-4 rounded-lg">
+        <div className="text-white px-4 rounded-lg animate-fade-in animate-delay-200">
           <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
-          <p className="text-lg mb-4 flex justify-center items-center gap-2"><Phone /> <a href="tel:+918768908769" className="text-blue-500 underline">+91 87689 08769</a></p>
-          <p className="text-lg mb-4 flex justify-center items-center gap-2"><Mail /> <a href="mailto:officialsankalpa@gmail.com" className="text-blue-500 underline">officialsankalpa@gmail.com</a></p>
+          <p className="text-lg mb-4 flex justify-center items-center gap-2 transition-all duration-300 hover:scale-105"><Phone /> <a href="tel:+918768908769" className="text-blue-500 underline">+91 87689 08769</a></p>
+          <p className="text-lg mb-4 flex justify-center items-center gap-2 transition-all duration-300 hover:scale-105"><Mail /> <a href="mailto:officialsankalpa@gmail.com" className="text-blue-500 underline">officialsankalpa@gmail.com</a></p>
         </div>
-        <div className="flex justify-center space-x-4 mb-2">
+        <div className="flex justify-center space-x-4 mb-2 animate-slide-up animate-delay-400">
           <Link href="https://youtube.com/@sankalpa-nh5yo?si=llz7wTW9CtkzrEb3" target="_blank" rel="noopener noreferrer">
-            <FaYoutube className="text-red-500 hover:text-red-700" size={32} />
+            <FaYoutube className="text-red-500 hover:text-red-700 transition-all duration-300 hover:scale-125" size={32} />
           </Link>
           <Link href="https://www.facebook.com/Sankalpian?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer">
-            <FaFacebook className="text-blue-500 hover:text-blue-700" size={32} />
+            <FaFacebook className="text-blue-500 hover:text-blue-700 transition-all duration-300 hover:scale-125" size={32} />
           </Link>
           <Link href="https://www.instagram.com/sankalpa2014" target="_blank" rel="noopener noreferrer">
-            <FaInstagram className="text-pink-500 hover:text-pink-700" size={32} />
+            <FaInstagram className="text-pink-500 hover:text-pink-700 transition-all duration-300 hover:scale-125" size={32} />
           </Link>
         </div>
         <p className="mt-8">&copy; {new Date().getFullYear()} SANKALPA. All rights reserved.</p>

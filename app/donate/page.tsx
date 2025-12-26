@@ -2,19 +2,24 @@
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
 import Image from 'next/image'
+import { useScrollAnimation } from '@/app/hooks/useScrollAnimation'
 
 export default function Donate() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: paraRef, isVisible: paraVisible } = useScrollAnimation();
+  const { ref: card1Ref, isVisible: card1Visible } = useScrollAnimation();
+  const { ref: card2Ref, isVisible: card2Visible } = useScrollAnimation();
   return (
     <div className="min-h-screen flex flex-col bg-white text-black overflow-x-hidden">
       <Header />
       <main className="flex-grow py-16 px-4 mt-[10vh]">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-8 text-green-700">Donate to SANKALPA</h1>
-          <p className="text-lg mb-8 text-gray-700">
+          <h1 ref={titleRef} className={`text-4xl font-bold mb-8 text-green-700 animate-on-scroll ${titleVisible ? 'visible animate-slide-up' : ''}`}>Donate to SANKALPA</h1>
+          <p ref={paraRef} className={`text-lg mb-8 text-gray-700 animate-on-scroll ${paraVisible ? 'visible animate-fade-in' : ''}`}>
             Your support helps us continue our mission to provide relief to the poor, support education, offer medical relief, and advance other charitable purposes.
           </p>
           <div className="flex flex-col md:flex-row justify-center items-start md:items-stretch space-y-8 md:space-y-0 md:space-x-8">
-            <div className="bg-green-100 p-8 rounded-lg shadow-md w-full md:w-1/2 flex flex-col justify-between">
+            <div ref={card1Ref} className={`bg-green-100 p-8 rounded-lg shadow-md w-full md:w-1/2 flex flex-col justify-between hover-lift animate-on-scroll ${card1Visible ? 'visible animate-slide-in-left' : ''}`}>
               <div className='flex flex-col justify-start'>
                 <h2 className="text-2xl font-semibold mb-6 text-green-700">Bank Transfer</h2>
                 <table className="table-auto w-full text-left">
@@ -42,7 +47,7 @@ export default function Donate() {
                 Please send us an email at <b>officialsankalpa@gmail.com</b> with your transaction details for receipt and acknowledgment.
               </p>
             </div>
-            <div className="bg-blue-100 p-8 rounded-lg shadow-md w-full md:w-1/2 flex flex-col justify-between">
+            <div ref={card2Ref} className={`bg-blue-100 p-8 rounded-lg shadow-md w-full md:w-1/2 flex flex-col justify-between hover-lift animate-on-scroll ${card2Visible ? 'visible animate-slide-in-right' : ''}`}>
               <div>
                 <h2 className="text-2xl font-semibold mb-4 text-blue-700">UPI Payment</h2>
                 <p className="mb-2">UPI ID: sankalpa8283@sbi</p>
