@@ -114,7 +114,10 @@ export default function Header() {
             <FaInstagram className="text-white hover:text-pink-500" size={24} />
           </Link> */}
           <Link href="/donate">
-            <div className="bg-[#046A38] text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 flex gap-1.5 items-center hover-scale hover-glow select-none cursor-pointer animate-pulse" style={{ animationDuration: '0.75s' }}>
+            <div
+              className="bg-[#046A38] text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 flex gap-1.5 items-center hover-scale hover-glow select-none cursor-pointer animate-pulse"
+              style={{ animationDuration: "0.75s" }}
+            >
               Donate Now
               <Heart size={20} className="inline-block " fill="#fff" />
             </div>

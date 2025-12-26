@@ -859,25 +859,25 @@ function Footer() {
         <div className="text-white px-4 rounded-lg animate-fade-in animate-delay-200">
           <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
           <p className="text-lg mb-4 flex justify-center items-center gap-2 transition-all duration-300 hover:scale-105">
-            <Phone className="text-emerald-400" />{" "}
+            <Phone className="" />{" "}
             <a
               href="tel:+918768908769"
-              className="text-teal-400 hover:text-teal-300 underline transition-colors duration-300"
+              className="hover:text-teal-300 underline transition-colors duration-300"
             >
               +91 87689 08769
             </a>
           </p>
           <p className="text-lg mb-4 flex justify-center items-center gap-2 transition-all duration-300 hover:scale-105">
-            <Mail className="text-emerald-400" />{" "}
+            <Mail className="" />{" "}
             <a
               href="mailto:officialsankalpa@gmail.com"
-              className="text-teal-400 hover:text-teal-300 underline transition-colors duration-300"
+              className=" hover:text-teal-300 underline transition-colors duration-300"
             >
               officialsankalpa@gmail.com
             </a>
           </p>
         </div>
-        <div className="flex justify-center space-x-4 mb-2 animate-slide-up animate-delay-400">
+        <div className="flex justify-center space-x-8 mb-2 animate-slide-up animate-delay-400">
           <Link
             href="https://youtube.com/@sankalpa-nh5yo?si=llz7wTW9CtkzrEb3"
             target="_blank"
@@ -885,7 +885,7 @@ function Footer() {
           >
             <FaYoutube
               className="text-red-500 hover:text-red-600 transition-all duration-300 hover:scale-125"
-              size={32}
+              size={48}
             />
           </Link>
           <Link
@@ -895,7 +895,7 @@ function Footer() {
           >
             <FaFacebook
               className="text-blue-500 hover:text-blue-600 transition-all duration-300 hover:scale-125"
-              size={32}
+              size={48}
             />
           </Link>
           <Link
@@ -905,7 +905,7 @@ function Footer() {
           >
             <FaInstagram
               className="text-pink-500 hover:text-pink-600 transition-all duration-300 hover:scale-125"
-              size={32}
+              size={48}
             />
           </Link>
         </div>
