@@ -297,7 +297,7 @@ function AboutSection() {
 function MissionSection() {
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
   const { ref: subtitleRef, isVisible: subtitleVisible } = useScrollAnimation();
-  const { ref: listRef, isVisible: listVisible } = useScrollAnimation();
+  const { ref: listRef, isVisible: listVisible } = useScrollAnimation<HTMLUListElement>();
 
   const objectives = [
     "To make women empowerment with environmental issues: which helps them to take their own decisions by breaking all personal limitations of the society and family.",
